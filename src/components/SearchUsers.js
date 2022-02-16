@@ -3,26 +3,25 @@ import React from "react";
 import { getUsers } from "../redux/slices/users";
 import { useDispatch, useSelector } from "react-redux";
 import Search from "antd/lib/input/Search";
-import { Button } from "antd";
 
 export default function SearchUsers() {
 	const dispatch = useDispatch();
-	const { users } = useSelector((state) => state.users);
+	const { list, isLoading } = useSelector((state) => state.users);
 
-	const onSearch = (value) => console.log(value);
-
-	const getUsersFromGit = (username) => {
-		dispatch(getUsers(username));
+	const onSearch = (value) => {
+		dispatch(getUsers(value));
 	};
 
 	return (
-		<>
-			<Button type="primary">Hola</Button>
+		<div className="container">
 			<Search
-				placeholder="input search text"
+				placeholder="Ingrese nombre de usuario de GitHub"
 				onSearch={onSearch}
 				enterButton
+				size="large"
+				className="mt-5 mx-auto"
+				required
 			/>
-		</>
+		</div>
 	);
 }
