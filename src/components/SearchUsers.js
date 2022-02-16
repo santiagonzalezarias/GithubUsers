@@ -3,13 +3,16 @@ import React from "react";
 import { getUsers } from "../redux/slices/users";
 import { useDispatch, useSelector } from "react-redux";
 import Search from "antd/lib/input/Search";
+import { useNavigate } from "react-router";
 
 export default function SearchUsers() {
 	const dispatch = useDispatch();
 	const { list, isLoading } = useSelector((state) => state.users);
+	const navigate = useNavigate();
 
 	const onSearch = (value) => {
 		dispatch(getUsers(value));
+		navigate("/");
 	};
 
 	return (

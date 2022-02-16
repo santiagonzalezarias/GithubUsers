@@ -7,7 +7,7 @@ export default function Navbar() {
 			<div className="container">
 				<a className="navbar-brand" href="/">
 					<GithubOutlined className="me-2" />
-					GitHub Users Search
+					Github Users Finder
 				</a>
 				<span style={{ color: "white" }}>
 					By: &copy; Santiago González Arias - FullStack Developer

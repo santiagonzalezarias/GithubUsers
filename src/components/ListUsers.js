@@ -4,7 +4,7 @@ import { GithubOutlined } from "@ant-design/icons/lib/icons";
 import { useNavigate } from "react-router-dom";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { Card, Spin } from "antd";
+import { Card, Spin, Alert } from "antd";
 
 export default function ListUsers() {
 	const dispatch = useDispatch();
@@ -18,6 +18,17 @@ export default function ListUsers() {
 
 	return (
 		<Spin size="=large" tip="Cargando..." spinning={isLoading} delay={500}>
+			{list.length === 0 && (
+				<Alert
+					message="No se encontraron usuarios"
+					description="No se encontraron coicidencias de usuarios con este nombre"
+					type="error"
+					showIcon
+					closable={true}
+					style={{ width: "50%", margin: "20px" }}
+				/>
+			)}
+
 			<div className="mt-5 container ">
 				<div className="row gap-5 ">
 					{list.map((user, index) => {
